@@ -4,42 +4,56 @@
 # * CELSIUS SCALE
 # * FARENHEIT SCALE
 # * KELVIN SCALE
+# * RANKINE SCALE
 
 # These Converions are based on these Internet resources 
 
 # * https://en.wikipedia.org/wiki/Conversion_of_scales_of_temperature
 # * https://www.google.com/search?q=Temperature+Converter 
 
+class Temperature_Converions:
 
-# Class for Celsius Scale
-class Celsius:
-	values = {}
+	def __convert(dic :dict, return_type):
+		if return_type == 'l':
+			return list(dic.items())
+		elif return_type == 't':
+			return tuple(list(dic.items()))
+		elif return_type  == 's':
+			return set(list(dic.items()))
+		elif return_type == 'd':
+			return dic
+		else:
+			return f"ReturnTypeError: Unknown Return_Type ==> {return_type}"
 
-	def convert(self, value):
-		Celsius.values = {
-		'Fahrenheit' : (value * 9/5) + 32,
-		'Kelvin' : value + 273.15 
-		}
-		return Celsius.values
 
-# Class for Farenheit Scale
-class Fahrenheit:
-	values = {}
-	
-	def convert(self, value):
-		Fahrenheit.values = {
-		'Celsius' : (value - 32) * 5/9,
-		'Kelvin' : (value - 32) * 5/9 + 273.15
-		}
-		return Fahrenheit.values
-
-# Class for Kelvin Scale
-class Kelvin:
-	values = {}
-
-	def convert(self, value):
-		Kelvin.values = {
+	def convert(self, scale :str ='c',value :int = 1, return_type :str = 'd'):
+		if scale == 'c':
+			dic = {
+				'Fahrenheit' : (value * 9/5) + 32,
+				'Kelvin' : value + 273.15,
+				'Rankine' : value * 9/5 + 491.67 
+			}
+			return Temperature_Converions.__convert(dic, return_type)
+		elif scale == 'f':
+			dic = {
+				'Celsius' : (value - 32) * 5/9,
+				'Kelvin' : (value - 32) * 5/9 + 273.15,
+				'Rankine' : value + 459.67
+				}
+			return Temperature_Converions.__convert(dic, return_type)
+		elif scale == 'k':
+			dic = {
 		'Celsius' : value - 273.15,
-		'Fahrenheit' : (value - 273.15) * 9/5 + 32 
+		'Fahrenheit' : (value - 273.15) * 9/5 + 32 ,
+		'Rankine' : value * 1.8
 		}
-		return Kelvin.values
+			return Temperature_Converions.__convert(dic, return_type)
+		elif scale == 'r':
+			dic = {
+		'Celsius' : (value - 491.67) * 5/9,
+		'Fahrenheit' : value - 459.67,
+		'Kelvin' : value * 5/9
+		}
+			return Temperature_Converions.__convert(dic, return_type)
+		else:
+			return f"ScaleError: Unknown Scale ==> {scale}"
