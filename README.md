@@ -5,10 +5,10 @@ A Small Project made by me. For Conversion of Temperature from one [Temperature 
 ## Example
 
 ```Python
-import TempDEV
+import TempDEV as TD
 
 #Create an Object
-temp = Temperature_Conversions()
+temp = TD.Temperature_Conversions()
 temp.convert("c", 1, "j")
 ```
 
