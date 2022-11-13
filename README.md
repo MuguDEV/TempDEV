@@ -8,13 +8,13 @@ A Small Project made by me. For Conversion of Temperature from one [Temperature 
 import TempDEV as TD
 
 #Create an Object
-temp = TD.Temperature_Conversions()
+temp = TD.Temperature_Converions()
 temp.convert("c", 1, "j")
 ```
 
 ## Output
 
-On Executing the above code it gives output as [Dictionary](https://www.geeksforgeeks.org/python-dictionary/). like this
+On Executing the above code it gives output as [JSON](https://www.json.org/json-en.html). like this
 
 ```Python
 {
@@ -36,6 +36,7 @@ On Executing the above code it gives output as [Dictionary](https://www.geeksfor
 > Available Methods
  - convert(Scale, value, Return_Type)
  - symbols(scale)
+ 
 Scale {c-Celsius, f-Fahrenheit, k-Kelvin, r-Rankine, d-Delisle}
 Return {d-Dictionary, l-List, t-Tuple, s-Set, j-JSON}
  
